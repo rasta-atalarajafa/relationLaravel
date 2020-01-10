@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Post;
 use App\Author;
 
 class PostTableSeeder extends Seeder
@@ -13,7 +14,6 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        //hitung total author
         $authors = Author::all();
 
         $data = array();
