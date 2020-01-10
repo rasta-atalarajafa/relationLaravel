@@ -19,7 +19,7 @@ class PostTableSeeder extends Seeder
         $data = array();
         foreach (range(1, 10) as $index) {
             $data[] = [
-                'title'        => 'Postingan #'. $index,
+                'title'        => 'Postingan x'. $index,
                 'article'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quas minima quia sed maiores, deserunt incidunt? 
                                    Minima eaque enim modi aut sunt accusantium atque, nostrum quaerat blanditiis vel nam deserunt.',
                 'title_clean'  => '-',
