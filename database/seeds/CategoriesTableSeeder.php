@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Categorie;
 
 class CategoriesTableSeeder extends Seeder
 {

@@ -20,8 +20,7 @@ class PostTableSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             $data[] = [
                 'title'        => 'Postingan x'. $index,
-                'article'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quas minima quia sed maiores, deserunt incidunt? 
-                                   Minima eaque enim modi aut sunt accusantium atque, nostrum quaerat blanditiis vel nam deserunt.',
+                'article'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
                 'title_clean'  => '-',
                 'file'         => '-',
                 'author_id'    => rand(1, $authors->count()),
