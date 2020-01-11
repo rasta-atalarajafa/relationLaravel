@@ -1,26 +1,44 @@
 @extends('templates.base')
 
-@section('content')
+@section('title','Daftar Barang')
     
+@section('content')
 <section class="content-header">
-  <h1>
-    Data Post
-  </h1>
-</section>
-
-<!-- Main content -->
-<section class="content">
+    <h1>
+      Data Postingan
+      <small>it all starts here</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fas fa-tachometer-alt"></i> Home</a></li>
+      <li><a href="#">Examples</a></li>
+      <li class="active">Blank page</li>
+    </ol>
+  </section>
   
-<div class="box">
-  <a href="/post/create" class="btn btn-primary"><i class="fa fa-plus"> Tambah data</i></a>
-  @if (session('status'))
-      <div class="alert alert-success">
-        {{session('status')}}
+  <!-- Main content -->
+  <section class="content">
+  
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border">
+        {{-- Search --}}
+        <div class="input-group input-group-sm hidden-xs" style="width: 175px;">
+          <input type="text" name="search" id="search" class="form-control pull-right" placeholder="search">
+          <div class="input-group-btn">
+            @csrf
+            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+          </div>
+        </div>        
+        <div class="box-tools pull-right">
+          <button type="submit" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <i class="fa fa-minus"></i></button>
+          {{-- <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+            <i class="fa fa-times"></i></button> --}}
+        </div>
       </div>
-  @endif
-  <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+      <div class="box-body">
+        <a href="{{ url('/post/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Postingan</i></a>        
+        <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -49,12 +67,12 @@
                     <td>
                       <form action="/post/{{ $post->id }}" method="post" class="d-inline">
                       <a href="/post/{{ $post->id }}/edit" type="submit" class="btn btn-primary">
-                        <i class="fa fa-edit">Edit</i>
+                        <i class="fas fa-edit">Edit</i>
                       </a>
                         @method('delete')
                         @csrf
                         <button type="submit" class="btn btn-danger">
-                          <i class="fa fa-trash">Delete</i>
+                          <i class="fas fa-trash">Delete</i>
                         </button>
                       </form>
                     </td>
@@ -63,7 +81,7 @@
                   @endforeach
                 </table>
             </div>
-            {{$data->links()}}
+              {{$data->links()}}
             <!-- /.box-body -->
           </div>
           @endsection

@@ -9,6 +9,7 @@
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('plugins/Ionicons/css/ionicons.min.css') }}">
@@ -101,7 +102,7 @@
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="#"><i class="fas fa-circle text-success"></i> Online</a>
         </div>
       </div>  
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -109,7 +110,39 @@
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="{{ url('/post') }}">
-            <i class="fa fa-users"></i> <span>Post</span>
+            <i class="fas fa-cubes"></i> <span>Postingan</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">Hot</small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/post') }}">
+            <i class="fas fa-folder-minus"></i> <span>Master(Sub Menu)</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">Hot</small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/post') }}">
+            <i class="fas fa-quidditch"></i> <span>Author</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">Hot</small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/post') }}">
+            <i class="fas fa-sort-alpha-up"></i> <span>Category</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">Hot</small>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ url('/post') }}">
+            <i class="fas fa-tags"></i> <span>Tag</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">Hot</small>
             </span>

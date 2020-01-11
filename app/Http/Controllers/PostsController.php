@@ -14,7 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $data = Post::paginate(4);
+        $data = Post::paginate(5);
         return view('post.index', compact('data'));
     }
 
