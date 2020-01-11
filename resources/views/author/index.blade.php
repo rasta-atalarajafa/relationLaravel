@@ -1,11 +1,11 @@
 @extends('templates.base')
 
-@section('title','Data Postingan')
+@section('title','Author')
     
 @section('content')
 <section class="content-header">
     <h1>
-      Data Postingan
+      Data Author
       <small>it all starts here</small>
     </h1>
     <ol class="breadcrumb">
@@ -37,36 +37,28 @@
         </div>
       </div>
       <div class="box-body">
-        <a href="{{ url('/post/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Postingan</i></a>        
+        <a href="{{ url('/post/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Author</i></a>        
         <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Title</th>
-                    <th>Article</th>
-                    <th>Title_Clean</th>
-                    <th>File</th>
-                    <th>Author</th>
-                    <th>Banner_Image</th>
-                    <th>Views</th>
+                    <th>Display_Name</th>
+                    <th>First_Name</th>
+                    <th>Last_Name</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   @php($no = $data->perPage() * $data->currentPage() - $data->perPage() + 1)
-                  @foreach ($data as $post)
+                  @foreach ($data as $author)
                   <tr>
                     <td>{{ $no }}</td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->article}}</td>
-                    <td>{{$post->title_clean}}</td>
-                    <td>{{$post->file}}</td>
-                    <td>{{$post->author->display_name}}</td>
-                    <td>{{$post->banner_image}}</td>
-                    <td>{{$post->views}}</td>
+                    <td>{{$author->display_name}}</td>
+                    <td>{{$author->first_name}}</td>
+                    <td>{{$author->last_name}}</td>
                     <td>
-                      <form action="/post/{{ $post->id }}" method="post" class="d-inline">
-                      <a href="/post/{{ $post->id }}/edit" type="submit" class="btn btn-primary">
+                      <form action="/author/{{ $author->id }}" method="post" class="d-inline">
+                      <a href="/author/{{ $author->id }}/edit" type="submit" class="btn btn-primary">
                         <i class="fas fa-edit">Edit</i>
                       </a>
                         @method('delete')

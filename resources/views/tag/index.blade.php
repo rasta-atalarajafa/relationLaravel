@@ -42,31 +42,22 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Title</th>
-                    <th>Article</th>
-                    <th>Title_Clean</th>
-                    <th>File</th>
-                    <th>Author</th>
-                    <th>Banner_Image</th>
-                    <th>Views</th>
-                    <th>Action</th>
+                    <th>Post_ID</th>
+                    <th>Tag</th>
+                    <th>Tag_Clean</th>
                   </tr>
                 </thead>
                 <tbody>
                   @php($no = $data->perPage() * $data->currentPage() - $data->perPage() + 1)
-                  @foreach ($data as $post)
+                  @foreach ($data as $tag)
                   <tr>
                     <td>{{ $no }}</td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->article}}</td>
-                    <td>{{$post->title_clean}}</td>
-                    <td>{{$post->file}}</td>
-                    <td>{{$post->author->display_name}}</td>
-                    <td>{{$post->banner_image}}</td>
-                    <td>{{$post->views}}</td>
+                    <td>{{$tag->post->title}}</td>
+                    <td>{{$tag->tag}}</td>
+                    <td>{{$tag->tag_clean}}</td>
                     <td>
-                      <form action="/post/{{ $post->id }}" method="post" class="d-inline">
-                      <a href="/post/{{ $post->id }}/edit" type="submit" class="btn btn-primary">
+                      <form action="/tag/{{ $tag->id }}" method="post" class="d-inline">
+                      <a href="/tag/{{ $tag->id }}/edit" type="submit" class="btn btn-primary">
                         <i class="fas fa-edit">Edit</i>
                       </a>
                         @method('delete')

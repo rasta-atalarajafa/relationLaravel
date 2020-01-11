@@ -72,11 +72,11 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat"><i class="fas fa-id-badge"> Profile</i></a>
                 </div>
                 <div class="pull-right">
                   <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
-                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
+                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"> Sign out</i></a>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                   </form>
@@ -110,7 +110,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="{{ url('/post') }}">
-            <i class="fas fa-cubes"></i> <span>Postingan</span>
+            <i class="fas fa-paper-plane"></i> <span>Postingan</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">Hot</small>
             </span>
@@ -118,22 +118,22 @@
         </li>
         <li>
           <a href="{{ url('/post') }}">
-            <i class="fas fa-folder-minus"></i> <span>Master(Sub Menu)</span>
+            <i class="fas fa-layer-group"></i> <span>Master(Sub Menu)</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">Hot</small>
             </span>
           </a>
         </li>
         <li>
-          <a href="{{ url('/post') }}">
-            <i class="fas fa-quidditch"></i> <span>Author</span>
+          <a href="{{ url('/author') }}">
+            <i class="fas fa-feather-alt"></i> <span>Author</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">Hot</small>
             </span>
           </a>
         </li>
         <li>
-          <a href="{{ url('/post') }}">
+          <a href="{{ url('/category') }}">
             <i class="fas fa-sort-alpha-up"></i> <span>Category</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">Hot</small>
@@ -141,7 +141,7 @@
           </a>
         </li>
         <li>
-          <a href="{{ url('/post') }}">
+          <a href="{{ url('/tag') }}">
             <i class="fas fa-tags"></i> <span>Tag</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">Hot</small>

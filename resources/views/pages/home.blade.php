@@ -10,7 +10,7 @@
     <small>it all starts here</small>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#"><i class="fas fa-tachometer-alt"></i> Home</a></li>
     <li><a href="#">Examples</a></li>
     <li class="active">Blank page</li>
   </ol>
@@ -22,7 +22,7 @@
   <!-- Default box -->
   <div class="box">
     <div class="box-header with-border">
-      <h3 class="box-title">Title</h3>
+      <h3 class="box-title"><i class="fas fa-tachometer-alt"> Home</i></h3>
 
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
