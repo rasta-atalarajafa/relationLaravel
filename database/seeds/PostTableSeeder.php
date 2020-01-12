@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Author;
+use Faker\Factory as Faker;
 
 class PostTableSeeder extends Seeder
 {
@@ -15,13 +16,13 @@ class PostTableSeeder extends Seeder
     public function run()
     {
         $authors = Author::all();
+        $faker = Faker::create('id_ID');
 
         $data = array();
         foreach (range(1, 10) as $index) {
             $data[] = [
-                'title'        => 'Postingan x'. $index,
-                'article'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quas minima quia sed maiores, deserunt incidunt? 
-                                   Minima eaque enim modi aut sunt accusantium atque, nostrum quaerat blanditiis vel nam deserunt.',
+                'title'        => $faker->word,
+                'article'      => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'title_clean'  => '-',
                 'file'         => '-',
                 'author_id'    => rand(1, $authors->count()),

@@ -14,6 +14,9 @@
   <link rel="stylesheet" href=" {{ asset('plugins/Ionicons/css/ionicons.min.css')}}" >
   <!-- Theme style -->
   <link rel="stylesheet" href=" {{ asset('css/AdminLTE.min.css')}}">
+  <!-- fullCalendar -->
+  <link rel="stylesheet" href="{{ asset('plugins/fullcalendar/dist/fullcalendar.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('plugins/fullcalendar/dist/fullcalendar.print.min.css')}}" media="print">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href=" {{ asset('css/skins/_all-skins.min.css')}}">
@@ -108,12 +111,27 @@
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="{{ url('/post') }}">
-            <i class="fa fa-th"></i> <span>Post Data</span>
+            <i class="fa fa-th"></i> <span>Postingan</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">Hot</small>
             </span>
           </a>
         </li>
+      </li>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-pie-chart"></i>
+          <span>Master</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{url('/penulis')}}"><i class="fa fa-circle-o"></i> Penulis</a></li>
+          <li><a href="{{url('/kategori')}}"><i class="fa fa-circle-o"></i> Kategori</a></li>
+          <li><a href="{{url('/tag')}}"><i class="fa fa-circle-o"></i> Tag</a></li>
+        </ul>
+      </li>
       </ul>
     </section>
     <!-- /.sidebar -->

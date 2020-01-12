@@ -24,11 +24,10 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Name</th>
                     <th>Title</th>
                     <th>Article</th>
-                    <th>Email</th>
-                    <th>Alamat</th>
+                    <th>Title Clean</th>
+                    <th>File</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -37,10 +36,10 @@
                   @foreach ($post as $item)
                   <tr>
                     <td>{{ $no }}</td>
-                    <td> {{ $item->user->name }} </td>
-                    <td> {{ $item->user->email }} </td>
                     <td> {{ $item->title }} </td>
                     <td> {{ $item->article }} </td>
+                    <td> {{ $item->title_clean }} </td>
+                    <td> {{ $item->file }} </td>
                     <td>
                       <form action="/post/{{ $item->id }}" method="post" class="d-inline">
                       <a href="/post/{{ $item->id }}/edit" type="submit" class="btn btn-primary">

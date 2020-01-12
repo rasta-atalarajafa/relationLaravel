@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\User;
+use Faker\Factory as Faker;
 
 class CommentTableSeeder extends Seeder
 {
@@ -16,13 +17,14 @@ class CommentTableSeeder extends Seeder
     {
         $post = Post::all();
         $user = User::all();
+        $faker = Faker::create('id_ID');
 
         $data = array();
         foreach (range(1, 10) as $index) {
             $data[] = [
                 'post_id' => rand(1, $post->count()),
-                'is_reply_to_id' =>  $index,
-                'comment' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam earum excepturi quo sit! Placeat molestiae ipsum, tenetur omnis quidem magni, provident animi dolor, atque quo unde. Ducimus impedit maxime voluptates?',
+                'is_reply_to_id' =>  $faker->randomDigit,
+                'comment' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                 'user_id' => rand(1, $user->count()),
             ];
         }
