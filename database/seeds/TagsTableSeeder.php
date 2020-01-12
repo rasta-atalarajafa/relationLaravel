@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 use App\Post;
 
 class TagsTableSeeder extends Seeder
@@ -13,16 +14,19 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
+
+         //agar data-data yang termasuk di database semua data indonesia
+         $faker = Faker::create('id_ID');
+
          //hitung total posts 
          $posts = Post::all();
         
- 
          $data = array();
          foreach (range(1, 10) as $index) {
              $data[] = [
                      'post_id'        => rand(1, $posts->count()), 
-                     'tag'      => 'Tags' . $index,
-                     'tag_clean'      => 'clean' . $index,
+                     'tag'            => '#' . $faker->jobTitle,
+                     'tag_clean'      => $faker->company,
              
                 
              ];

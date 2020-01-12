@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        
-        $post = Post::with('user')->orderBy('created_at', 'desc')->paginate(3);
-        return view('post.index', compact('post'));
+        $category = Category::with('user')->orderBy('created_at', 'desc')->paginate(3);
+        return view('kategori.category', ['category' => $category]);
     }
 
     /**
@@ -26,7 +25,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        //
     }
 
     /**
@@ -43,10 +42,10 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Category $category)
     {
         //
     }
@@ -54,10 +53,10 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Category $category)
     {
         //
     }
@@ -66,10 +65,10 @@ class PostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -77,13 +76,11 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Category $category)
     {
-        Post::destroy($post->id);
-        return redirect('/post')->with('status', 'Data Mahasiswa berhasil di hapus!');// ->flesh
-         //untu menghapus data dan tanpa menghilangkan data di database dengan soft delete
+        //
     }
 }

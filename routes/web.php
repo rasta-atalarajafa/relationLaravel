@@ -18,4 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//membuat otomatis dan dapat memanggil semua isi postcontroller
 Route::resource('/post', 'PostsController');
+Route::resource('/penulis', 'AuthorController');
+Route::resource('/kategori', 'CategoryController');
+Route::resource('/tags', 'TagController');

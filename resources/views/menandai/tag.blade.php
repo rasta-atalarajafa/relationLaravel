@@ -24,35 +24,33 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Title</th>
-                    <th>Article</th>
-                    <th>Author_id</th>
-                    <th>Views</th>
+                    <th>Post-id</th>
+                    <th>Tag</th>
+                    <th>Tag_clean</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @php($no = $post->perPage() * $post->currentPage() - $post->perPage() + 1)
-                  @foreach ($post as $item)
+                  @php($no = $tags->perPage() * $tags->currentPage() - $tags->perPage() + 1)
+                  @foreach ($tags as $item)
                   <tr>
                     <td>{{ $no }}</td>
-                    <td> {{ $item->title }} </td>
-                    <td> {{ $item->article }} </td>
-                    <td> {{ $item->author_id }} </td>
-                    <td> {{ $item->views }} </td>
+                    <td> {{ $item->post_id }} </td>
+                    <td> {{ $item->tag }} </td>
+                    <td> {{ $item->tag_clean }} </td>
                     <td>
 
                      
 
                       <form action="/post/{{ $item->id }}" method="post" class="d-inline">
                         <a href="/post/{{ $item->id }}/edit" type="submit" class="btn btn-primary">
-                          <i class="fa fa-edit">Edit</i>
+                          <i class="fa fa-edit"> Edit</i>
                         </a>
                      
                         @method('delete')
                         @csrf
                         <button type="submit" class="btn btn-danger">
-                          <i class="fa fa-trash">Delete</i>
+                          <i class="fa fa-trash"> Delete</i>
                         </button>
                       </form>
                     </td>
@@ -61,7 +59,7 @@
                   @endforeach
                 </table>
             </div>
-            {{$post->links()}}
+            {{$tags->links()}}
             <!-- /.box-body -->
           </div>
           @endsection

@@ -36,9 +36,9 @@
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>R</b>A</span>
+      <span class="logo-mini"><b>HN</b>D</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Rasta</b>Atalarajafa</span>
+      <span class="logo-lg"><b>Hendy</b>Saputra</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -110,9 +110,23 @@
           <a href="{{ url('/post') }}">
             <i class="fa fa-th"></i> <span>Post Data</span>
             <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
+              <small class="label pull-right bg-green">New</small>
             </span>
           </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Master</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('/penulis')}}"><i class="fa fa-circle-o"></i> Penulis</a></li>
+            <li><a href="{{url('/kategori')}}"><i class="fa fa-circle-o"></i> Kategori</a></li>
+            <li><a href="{{url('/tags')}}"><i class="fa fa-circle-o"></i> Tag</a></li>
+          </ul>
         </li>
       </ul>
     </section>

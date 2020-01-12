@@ -20,7 +20,7 @@ class CreateTagsTable extends Migration
             $table->string('tag_clean');
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 

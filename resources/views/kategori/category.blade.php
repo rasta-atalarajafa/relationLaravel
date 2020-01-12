@@ -24,22 +24,18 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Title</th>
-                    <th>Article</th>
-                    <th>Author_id</th>
-                    <th>Views</th>
+                    <th>Name</th>
+                    <th>Name_clean</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @php($no = $post->perPage() * $post->currentPage() - $post->perPage() + 1)
-                  @foreach ($post as $item)
+                  @php($no =$category->perPage() *$category->currentPage() -$category->perPage() + 1)
+                  @foreach ($category as $item)
                   <tr>
                     <td>{{ $no }}</td>
-                    <td> {{ $item->title }} </td>
-                    <td> {{ $item->article }} </td>
-                    <td> {{ $item->author_id }} </td>
-                    <td> {{ $item->views }} </td>
+                    <td> {{ $item->name }} </td>
+                    <td> {{ $item->name_clean }} </td>
                     <td>
 
                      
@@ -61,7 +57,7 @@
                   @endforeach
                 </table>
             </div>
-            {{$post->links()}}
+            {{$category->links()}}
             <!-- /.box-body -->
           </div>
           @endsection

@@ -18,7 +18,7 @@ class CreateRelatedsTable extends Migration
             $table->unsignedbigInteger('related_post_id');
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');;
         });
     }
 
