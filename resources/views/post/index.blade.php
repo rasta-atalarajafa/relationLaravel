@@ -66,15 +66,11 @@
                     <td>{{$post->views}}</td>
                     <td>
                       <form action="/post/{{ $post->id }}" method="post" class="d-inline">
-                      <a href="/post/{{ $post->id }}/edit" type="submit" class="btn btn-primary">
-                        <i class="fas fa-edit">Edit</i>
-                      </a>
-                        @method('delete')
-                        @csrf
-                        <button type="submit" class="btn btn-danger">
-                          <i class="fas fa-trash">Delete</i>
-                        </button>
-                      </form>
+                          <a href="/post/{{ $post->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"> Edit</i></a>
+                          @method('delete')
+                          @csrf
+                          <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ?');"><i class="fas fa-trash"> Delete</i></button>
+                        </form>
                     </td>
                   </tr>
                   @php($no++)

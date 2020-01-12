@@ -25,7 +25,7 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('author.create');
     }
 
     /**
@@ -36,7 +36,8 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Author::create($request->all());
+        return redirect('/author');
     }
 
     /**
@@ -56,9 +57,9 @@ class AuthorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Author $author)
     {
-        //
+        return view('author.edit', compact('author'));
     }
 
     /**
@@ -68,9 +69,15 @@ class AuthorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Author $author)
     {
-        //
+        Author::where('id', $author->id)
+        ->update ([
+            'display_name' => $request->display_name,
+            'first_name'   => $request->first_name,
+            'last_name'    => $request->last_name
+        ]);
+        return redirect('/author');
     }
 
     /**
@@ -79,8 +86,9 @@ class AuthorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Author $author)
     {
-        //
+        Author::destroy($author->id);
+        return redirect('/author');
     }
 }

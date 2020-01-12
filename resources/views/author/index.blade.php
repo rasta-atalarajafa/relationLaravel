@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="box-body">
-        <a href="{{ url('/post/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Author</i></a>        
+        <a href="{{ url('/author/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Author</i></a>        
         <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
@@ -58,14 +58,10 @@
                     <td>{{$author->last_name}}</td>
                     <td>
                       <form action="/author/{{ $author->id }}" method="post" class="d-inline">
-                      <a href="/author/{{ $author->id }}/edit" type="submit" class="btn btn-primary">
-                        <i class="fas fa-edit">Edit</i>
-                      </a>
+                        <a href="/author/{{ $author->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"> Edit</i></a>
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger">
-                          <i class="fas fa-trash">Delete</i>
-                        </button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ?');"><i class="fas fa-trash"> Delete</i></button>
                       </form>
                     </td>
                   </tr>

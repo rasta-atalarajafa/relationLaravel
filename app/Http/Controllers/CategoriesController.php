@@ -25,7 +25,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
@@ -36,7 +36,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Categorie::create($request->all());
+        return redirect('/category');
     }
 
     /**
@@ -56,9 +57,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Categorie $category)
     {
-        //
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -68,9 +69,14 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Categorie $category)
     {
-        //
+        Categorie::where('id', $category->id)
+        ->update ([
+            'name'       => $request->name,
+            'name_clean' => $request->name_clean
+        ]);
+        return redirect('/category');
     }
 
     /**
@@ -79,8 +85,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Categorie $category)
     {
-        //
+        Categorie::destroy($category->id);
+        return redirect('/category');
     }
 }

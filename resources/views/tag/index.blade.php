@@ -1,11 +1,11 @@
 @extends('templates.base')
 
-@section('title','Data Postingan')
+@section('title','Tags')
     
 @section('content')
 <section class="content-header">
     <h1>
-      Data Postingan
+      Tags
       <small>it all starts here</small>
     </h1>
     <ol class="breadcrumb">
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="box-body">
-        <a href="{{ url('/post/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Postingan</i></a>        
+        <a href="{{ url('/tag/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Tags</i></a>        
         <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
@@ -45,6 +45,7 @@
                     <th>Post_ID</th>
                     <th>Tag</th>
                     <th>Tag_Clean</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -57,14 +58,10 @@
                     <td>{{$tag->tag_clean}}</td>
                     <td>
                       <form action="/tag/{{ $tag->id }}" method="post" class="d-inline">
-                      <a href="/tag/{{ $tag->id }}/edit" type="submit" class="btn btn-primary">
-                        <i class="fas fa-edit">Edit</i>
-                      </a>
+                        <a href="/tag/{{ $tag->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"> Edit</i></a>
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger">
-                          <i class="fas fa-trash">Delete</i>
-                        </button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ?');"><i class="fas fa-trash"> Delete</i></button>
                       </form>
                     </td>
                   </tr>

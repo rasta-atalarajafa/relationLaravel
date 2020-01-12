@@ -25,7 +25,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -36,7 +36,8 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create($request->all());
+        return redirect('/post');
     }
 
     /**
@@ -58,7 +59,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -70,7 +71,16 @@ class PostsController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        Post::where('id', $post->id)
+        ->update ([
+          'title'       => $request->title,
+          'article'     => $request->article,
+          'title_clean' => $request->title_clean,
+          'file'        => $request->file,
+          'author_id'   => $request->author_id,
+          'views'       => $request->views
+        ]);
+        return redirect('/post');
     }
 
     /**
@@ -81,6 +91,7 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+      Post::destroy($post->id);
+      return redirect('/post');
     }
 }

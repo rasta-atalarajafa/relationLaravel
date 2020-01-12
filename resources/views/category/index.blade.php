@@ -1,6 +1,6 @@
 @extends('templates.base')
 
-@section('title','Data Postingan')
+@section('title','Data Category')
     
 @section('content')
 <section class="content-header">
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="box-body">
-        <a href="{{ url('/post/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Postingan</i></a>        
+        <a href="{{ url('/category/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah Category</i></a>        
         <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
@@ -54,15 +54,11 @@
                     <td>{{$category->name}}</td>
                     <td>{{$category->name_clean}}</td>
                     <td>
-                      <form action="/post/{{ $category->id }}" method="post" class="d-inline">
-                      <a href="/post/{{ $category->id }}/edit" type="submit" class="btn btn-primary">
-                        <i class="fas fa-edit">Edit</i>
-                      </a>
+                      <form action="/category/{{ $category->id }}" method="post" class="d-inline">
+                        <a href="/category/{{ $category->id }}/edit" class="btn btn-primary"><i class="fas fa-edit"> Edit</i></a>
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger">
-                          <i class="fas fa-trash">Delete</i>
-                        </button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ?');"><i class="fas fa-trash"> Delete</i></button>
                       </form>
                     </td>
                   </tr>
