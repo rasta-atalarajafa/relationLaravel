@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Author;
+use Faker\Factory as Faker;
+
 
 class AuthorTableSeeder extends Seeder
 {
@@ -12,15 +14,16 @@ class AuthorTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create('id_ID');
+
         $data = array();
         foreach (range(1, 10) as $index) {
             $data[] = [
-                'display_name' => 'Author '. $index,
-                'first_name'   => 'author',
-                'last_name'    => 'postingan '. $index,
+                'display_name' => $faker->name,
+                'first_name'   => $faker->firstname,
+                'last_name'    => $faker->lastname,
             ];
         }
-
         Author::insert($data);
     }
     

@@ -108,45 +108,26 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview menu-open">
         <li>
           <a href="{{ url('/post') }}">
             <i class="fas fa-paper-plane"></i> <span>Postingan</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
-            </span>
           </a>
         </li>
-        <li>
-          <a href="{{ url('/post') }}">
-            <i class="fas fa-layer-group"></i> <span>Master(Sub Menu)</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{ url('/author') }}">
-            <i class="fas fa-feather-alt"></i> <span>Author</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{ url('/category') }}">
-            <i class="fas fa-sort-alpha-up"></i> <span>Category</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="{{ url('/tag') }}">
-            <i class="fas fa-tags"></i> <span>Tag</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">Hot</small>
-            </span>
-          </a>
+          <li class="treeview menu">
+            <a href="#">
+              <i class="fas fa-layer-group"></i>
+              <span>Master(Sub Menu)</span>
+              <span class="pull-right-container">
+                <span class="label label-primary pull-right">3</span>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ url('/author') }}"><i class="fas fa-feather-alt"></i> Author</a></li>
+              <li><a href="{{ url('category') }}"><i class="fas fa-sort-alpha-up"></i> Category</a></li>
+              <li><a href="{{ url('/tag') }}"><i class="fas fa-tags"></i> Tags</a></li>
+            </ul>
+          </li>
         </li>
         </ul>
     </section>

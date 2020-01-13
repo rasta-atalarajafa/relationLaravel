@@ -5,7 +5,7 @@
 @section('content')
 <section class="content-header">
     <h1>
-      Data Postingan
+      Data Category
       <small>it all starts here</small>
     </h1>
     <ol class="breadcrumb">
