@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use Illuminate\Http\Request;
+use App\Tag;
 
-class PostsController extends Controller
+class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $post = Post::with('author')->orderBy('created_at', 'desc')->paginate(3);
-        return view('post.index', ['post' => $post]);
+        $tag = Tag::orderBy('created_at', 'desc')->paginate(3);
+        return view('tag.index', ['tag' => $tag]);
     }
 
     /**
@@ -23,11 +23,11 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        return view('post.create');
+        //
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -36,58 +36,51 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->all());
-        return redirect('/post');
+        //
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        return view('post.edit', compact('post'));
+        //
     }
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        Post::where('id', $post->id)
-        ->update ([
-          'title'       => $request->title,
-          'article'     => $request->article,
-          'title_clean' => $request->title_clean,
-          'file'        => $request->file,
-          'author_id'   => $request->author_id,
-          'views'       => $request->views
-        ]);
-        return redirect('/post');
+        //
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-      Post::destroy($post->id);
-      return redirect('/post');
+        //
     }
 }

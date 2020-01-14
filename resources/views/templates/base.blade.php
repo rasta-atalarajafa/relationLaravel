@@ -127,8 +127,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{url('/penulis')}}"><i class="fa fa-circle-o"></i> Penulis</a></li>
-          <li><a href="{{url('/kategori')}}"><i class="fa fa-circle-o"></i> Kategori</a></li>
+          <li><a href="{{url('/author')}}"><i class="fa fa-circle-o"></i> Penulis</a></li>
+          <li><a href="{{url('/category')}}"><i class="fa fa-circle-o"></i> Kategori</a></li>
           <li><a href="{{url('/tag')}}"><i class="fa fa-circle-o"></i> Tag</a></li>
         </ul>
       </li>

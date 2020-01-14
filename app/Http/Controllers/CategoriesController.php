@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use Illuminate\Http\Request;
+use App\Category;
 
-class PostsController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $post = Post::with('author')->orderBy('created_at', 'desc')->paginate(3);
-        return view('post.index', ['post' => $post]);
+        $category = Category::orderBy('created_at', 'desc')->paginate(3);
+        return view('category.index', ['category' => $category]);
     }
 
     /**
@@ -23,10 +23,9 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        return view('post.create');
+        return view('category.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -36,58 +35,54 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->all());
-        return redirect('/post');
+        Category::create($request->all());
+        return redirect('/category');
     }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(category $category)
     {
-        return view('post.edit', compact('post'));
+        return view('category.edit', compact('category'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Category $category)
     {
-        Post::where('id', $post->id)
+        Category::where('id', $category->id)
         ->update ([
-          'title'       => $request->title,
-          'article'     => $request->article,
-          'title_clean' => $request->title_clean,
-          'file'        => $request->file,
-          'author_id'   => $request->author_id,
-          'views'       => $request->views
+            'name'       => $request->name,
+            'name_clean' => $request->name_clean
         ]);
-        return redirect('/post');
+        return redirect('/category');
     }
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Category $category)
     {
-      Post::destroy($post->id);
-      return redirect('/post');
+        Category::destroy($category->id);
+        return redirect('/category');
     }
 }
