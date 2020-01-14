@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
+use App\Categorie;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -25,7 +27,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        $categories = Categorie::pluck('name', 'id');
+        $tags = Tag::get(['id','name']);
+        return view('post.create', compact('tags','categories'));
     }
 
     /**
@@ -35,7 +39,8 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        dd($request->all());
         Post::create($request->all());
         return redirect('/post');
     }

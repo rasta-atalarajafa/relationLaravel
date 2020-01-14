@@ -20,11 +20,13 @@ class CreatePostsTable extends Migration
             $table->string('title_clean');
             $table->string('file');
             $table->unsignedbigInteger('author_id');
+            $table->unsignedbigInteger('category_id');
             $table->string('banner_image');
             $table->integer('views');
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('authors');
+            // $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

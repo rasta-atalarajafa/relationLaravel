@@ -70,6 +70,30 @@
                 @enderror
             </div>
             <div class="form-group">
+              <label for="categori_id">Category</label>
+              <select class="form-control" name="categori_id" id="category_id">
+                <option value="">---PIlih---</option>
+                @foreach ($categories as $id => $category)
+                <option value="{{ $id }}">{{ $category }}</option>
+                @endforeach
+              </select>
+              @error('categori_id')
+                  <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
+          </div>
+          <div class="form-group">
+            <label for="name">Tag</label>
+            <select class="form-control" name="tag[]" id="tag" multiple>
+              <option value="">---PIlih---</option>
+              @foreach ($tags as $tag)
+              <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+              @endforeach
+            </select>
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+            <div class="form-group">
                 <label for="banner_image">Banner_Image</label>
                 <input type="text" name="banner_image" class="form-control @error('banner_image') is-invalid @enderror" id="banner_image" placeholder="banner_image" value="{{ old('banner_image') }}" autocomplete="off">
                 @error('banner_image')

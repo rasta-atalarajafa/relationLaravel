@@ -47,6 +47,7 @@
                     <th>Title_Clean</th>
                     <th>File</th>
                     <th>Author</th>
+                    <th>Category</th>
                     <th>Banner_Image</th>
                     <th>Views</th>
                     <th>Action</th>
@@ -62,6 +63,7 @@
                     <td>{{$post->title_clean}}</td>
                     <td>{{$post->file}}</td>
                     <td>{{$post->author->display_name}}</td>
+                    <td>{{$post->category->name_clean}}</td>
                     <td>{{$post->banner_image}}</td>
                     <td>{{$post->views}}</td>
                     <td>
