@@ -13,16 +13,13 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        $posts  = Post::all();
-
         $data = array();
-        foreach (range(1, 10) as $index) {
-            $data[] = [                
-                'post_id'   =>rand(1, $posts->count()),
-                'tag'       =>'postingan asmw'. $index,
-                'tag_clean' =>'-',
-            ]; 
+        foreach (range(1, 5) as $index) {
+            $data[] = [
+                'name'   => 'Tag '. $index,
+            ];
         }
+
         Tag::insert($data);
     }
 }

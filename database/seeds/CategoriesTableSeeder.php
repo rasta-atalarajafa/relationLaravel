@@ -13,12 +13,13 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $data = array();
-        foreach (range(1, 10) as $index) {
+        foreach (range(1, 5) as $index) {
             $data[] = [
-                'name'       =>'Postingan asmw'. $index,
-                'name_clean' =>'-',
+                'name'       => 'Kategori #'. $index,
+                'name_clean' => '-',
             ];
         }
+
         DB::table('categories')->insert($data);
     }
 }
