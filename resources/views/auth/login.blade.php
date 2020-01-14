@@ -36,8 +36,8 @@
     </div>
   </form>
 
-  <a href="{{route('password.request')}}">I forgot my password</a><br>
-  <a href="{{route('register')}}" class="text-center">Register a new membership</a>
+  <a href="{{ route('password.request') }}">I forgot my password</a><br>
+  <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
 
 </div>
 @endsection

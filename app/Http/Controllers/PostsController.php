@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
+use App\Categorie;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -14,9 +16,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        
-        $post = Post::with('user')->orderBy('created_at', 'desc')->paginate(3);
-        return view('post.index', ['post' => $post]);
+        $data = Post::paginate(5);
+        return view('post.index', compact('data'));
     }
 
     /**
@@ -26,7 +27,9 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Categorie::pluck('name', 'id');
+        $tags = Tag::get(['id','name']);
+        return view('post.create', compact('tags','categories'));
     }
 
     /**
@@ -36,8 +39,10 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        dd($request->all());
+        Post::create($request->all());
+        return redirect('/post');
     }
 
     /**
@@ -59,7 +64,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -71,7 +76,16 @@ class PostsController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        Post::where('id', $post->id)
+        ->update ([
+          'title'       => $request->title,
+          'article'     => $request->article,
+          'title_clean' => $request->title_clean,
+          'file'        => $request->file,
+          'author_id'   => $request->author_id,
+          'views'       => $request->views
+        ]);
+        return redirect('/post');
     }
 
     /**
@@ -82,6 +96,7 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+      Post::destroy($post->id);
+      return redirect('/post');
     }
 }

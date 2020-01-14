@@ -42,8 +42,8 @@
     </div>
   </form>
 
-  <a href="{{route('password.request')}}">I forgot my password</a><br>
-  <a href="{{route('login')}}" class="text-center">I already have a membership</a>
+  <a href="{{ route('password.request') }}">I forgot my password</a><br>
+  <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
 
 </div>
 @endsection

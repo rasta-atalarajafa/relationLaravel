@@ -18,4 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/post', 'PostsController');
+
+//posts
+Route::resource('post','PostsController');
+
+//authors
+Route::resource('author','AuthorsController');
+
+//category
+Route::resource('category','CategoriesController');
+
+//Tags
+Route::resource('tag','TagsController');
+

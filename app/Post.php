@@ -6,10 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['user_id', 'name', 'email', 'title', 'article'];
+    protected $fillable = ['title','article','title_clean','file','author_id','category_id','banner_image','views'];
 
-    public function user()
+    public function author()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Author::class, 'author_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Categorie::class, 'category_id');
     }
 }
