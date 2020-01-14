@@ -12,7 +12,7 @@
 <section class="content">
   
 <div class="box">
-  <a href="/post/create" class="btn btn-primary">+ Tambah data</a>
+  <a href="/penulis/create" class="btn btn-primary">+ Tambah data</a>
   @if (session('status'))
       <div class="alert alert-success">
         {{session('status')}}
@@ -31,8 +31,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @php($no = $author->perPage() * $author->currentPage() - $author->perPage() + 1)
-                  @foreach ($author as $item)
+                  @php($no = $authors->perPage() * $authors->currentPage() - $authors->perPage() + 1)
+                  @foreach ($authors as $item)
                   <tr>
                     <td>{{ $no }}</td>
                     <td> {{ $item->display_name }} </td>
@@ -42,8 +42,8 @@
 
                      
 
-                      <form action="/post/{{ $item->id }}" method="post" class="d-inline">
-                        <a href="/post/{{ $item->id }}/edit" type="submit" class="btn btn-primary">
+                      <form action="/penulis/{{ $item->id }}" method="post" class="d-inline">
+                        <a href="/penulis/{{ $item->id }}/edit" type="submit" class="btn btn-primary">
                           <i class="fa fa-edit">Edit</i>
                         </a>
                      
@@ -59,7 +59,7 @@
                   @endforeach
                 </table>
             </div>
-            {{$author->links()}}
+            {{$authors->links()}}
             <!-- /.box-body -->
           </div>
           @endsection

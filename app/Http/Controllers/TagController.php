@@ -14,7 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::with('user')->orderBy('created_at', 'desc')->paginate(3);
+        $tags = Tag::orderBy('created_at', 'desc')->paginate(3);
         return view('menandai.tag', ['tags' => $tags]);
     }
 

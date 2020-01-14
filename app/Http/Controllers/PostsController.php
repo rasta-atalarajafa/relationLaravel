@@ -15,8 +15,8 @@ class PostsController extends Controller
     public function index()
     {
         
-        $post = Post::with('user')->orderBy('created_at', 'desc')->paginate(3);
-        return view('post.index', compact('post'));
+        $posts = Post::with('author')->orderBy('created_at', 'desc')->paginate(3);
+        return view('post.index', compact('posts'));
     }
 
     /**
@@ -37,7 +37,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+            
+            // -> cara ketiga create
+            Post::create($request->all());
+            return redirect('/post')->with('status', 'Data Mahasiswa berhasil di tambahkan!');
     }
 
     /**
@@ -59,7 +63,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -71,7 +75,20 @@ class PostsController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        Post::where('id', $post->id)
+        ->update([
+            'title'=> $request->title,
+            'article'=> $request->article,
+            'title_clean'=> $request->title_clean,
+            'file'=> $request->file,
+            'author_id'=> $request->author_id,
+            'banner_image'=> $request->banner_image,
+            'views'=> $request->views
+            
+
+        ]);
+
+    return redirect('/post')->with('status', 'Data Mahasiswa berhasi di Edit');// ->flesh
     }
 
     /**

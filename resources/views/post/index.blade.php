@@ -26,19 +26,25 @@
                     <th>No</th>
                     <th>Title</th>
                     <th>Article</th>
+                    <th>Title_clean</th>
+                    <th>File</th>
                     <th>Author_id</th>
+                    <th>Banner_image</th>
                     <th>Views</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @php($no = $post->perPage() * $post->currentPage() - $post->perPage() + 1)
-                  @foreach ($post as $item)
+                  @php($no = $posts->perPage() * $posts->currentPage() - $posts->perPage() + 1)
+                  @foreach ($posts as $item)
                   <tr>
                     <td>{{ $no }}</td>
                     <td> {{ $item->title }} </td>
                     <td> {{ $item->article }} </td>
-                    <td> {{ $item->author_id }} </td>
+                    <td> {{ $item->title_clean }} </td>
+                    <td> {{ $item->file }} </td>
+                    <td> {{ $item->author->display_name }} </td>
+                    <td> {{ $item->banner_image }} </td>
                     <td> {{ $item->views }} </td>
                     <td>
 
@@ -51,7 +57,7 @@
                      
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin ingin menghapus data ?')">
                           <i class="fa fa-trash">Delete</i>
                         </button>
                       </form>
@@ -61,7 +67,7 @@
                   @endforeach
                 </table>
             </div>
-            {{$post->links()}}
+            {{$posts->links()}}
             <!-- /.box-body -->
           </div>
           @endsection

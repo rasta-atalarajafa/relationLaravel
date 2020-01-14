@@ -14,8 +14,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $author = Author::with('user')->orderBy('created_at', 'desc')->paginate(3);
-        return view('penulis.author', ['author' => $author]);
+        $authors = Author::orderBy('created_at', 'desc')->paginate(3);
+        return view('penulis.author', compact('authors'));
     }
 
     /**
@@ -25,7 +25,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('penulis.create');
     }
 
     /**
@@ -36,7 +36,9 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // -> cara ketiga create
+         Author::create($request->all());
+         return redirect('/penulis')->with('status', 'Data Mahasiswa berhasil di tambahkan!');
     }
 
     /**
@@ -58,7 +60,7 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        //
+        return view('penulis.edit', compact('author'));
     }
 
     /**
@@ -70,7 +72,17 @@ class AuthorController extends Controller
      */
     public function update(Request $request, Author $author)
     {
-        //
+        Author::where('id', $author->id)
+        ->update([
+            'display_name'   => $request->display_name,
+            'first_name'     => $request->first_name,
+            'last_name'      => $request->last_name
+            
+            
+
+        ]);
+
+    return redirect('/penulis')->with('status', 'Data Mahasiswa berhasi di Edit');// ->flesh
     }
 
     /**
@@ -81,6 +93,8 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
-        //
+        Author::destroy($author->id);
+        return redirect('/penulis')->with('status', 'Data Mahasiswa berhasil di hapus!');// ->flesh
+         //untu menghapus data dan tanpa menghilangkan data di database dengan soft delete
     }
 }

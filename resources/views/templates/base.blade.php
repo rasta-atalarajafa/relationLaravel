@@ -108,7 +108,7 @@
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="{{ url('/post') }}">
-            <i class="fa fa-th"></i> <span>Post Data</span>
+            <i class="fa fa-paper-plane-o"></i> <span>Post Data</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">New</small>
             </span>
@@ -116,10 +116,10 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Master</span>
+            <i class="fa fa-asterisk"></i>
+            <span> Master </span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
+              <span class="label label-primary pull-right">Sub Menu</span>
             </span>
           </a>
           <ul class="treeview-menu">

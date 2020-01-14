@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::with('user')->orderBy('created_at', 'desc')->paginate(3);
+        $category = Category::orderBy('created_at', 'desc')->paginate(3);
         return view('kategori.category', ['category' => $category]);
     }
 

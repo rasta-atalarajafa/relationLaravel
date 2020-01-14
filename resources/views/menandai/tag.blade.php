@@ -24,7 +24,7 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Post-id</th>
+                    <th>Post</th>
                     <th>Tag</th>
                     <th>Tag_clean</th>
                     <th>Action</th>
@@ -35,7 +35,7 @@
                   @foreach ($tags as $item)
                   <tr>
                     <td>{{ $no }}</td>
-                    <td> {{ $item->post_id }} </td>
+                    <td> {{ $item->post->article }} </td>
                     <td> {{ $item->tag }} </td>
                     <td> {{ $item->tag_clean }} </td>
                     <td>

@@ -8,8 +8,8 @@ class Tag extends Model
 {
     protected $fillable = ['post_id', 'tag', 'tag_clean'];
     
-    public function user()
+    public function post()
     {
-        return $this->belongsTo(User::class, 'post_id');
+        return $this->belongsTo(Post::class, 'post_id');
     }
 }
