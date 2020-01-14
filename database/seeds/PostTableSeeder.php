@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Author;
 use App\Categorie;
+use App\Tag;
+use App\Post;
 
 class PostTableSeeder extends Seeder
 {
@@ -33,5 +35,20 @@ class PostTableSeeder extends Seeder
         }
 
         DB::table('posts')->insert($data);
+
+        // post tags
+        $posts = Post::all();
+        $tags = Tag::all();
+        $data_tag = array();
+        foreach ($posts as $post) {
+            foreach (range(1, 3) as $index) {
+                $data_tag[] = [
+                    'post_id' => $post->id,
+                    'tag_id' => rand(1, $tags->count()),
+                ];
+            }
+        }
+
+        DB::table('post_to_tags')->insert($data_tag);
     }
 }
