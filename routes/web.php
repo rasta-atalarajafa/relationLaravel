@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ajax/{id}', 'HomeController@getAjax')->name('ajax.index');
+Route::post('/ajax', 'HomeController@storeAjax')->name('ajax.store');
 
 //posts
 Route::resource('post','PostsController');

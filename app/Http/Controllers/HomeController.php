@@ -25,4 +25,23 @@ class HomeController extends Controller
     {
         return view('pages.home');
     }
+
+    public function getAjax($id)
+    {
+        $user = \App\User::find($id);
+
+        if ($user == null) {
+            return response()->json([
+                'code' => 404,
+                'success' => false,
+                'error' => 'User not found'
+            ], 404);
+        } else {
+            return response()->json([
+                'code' => 200,
+                'success' => true,
+                'error' => $user
+            ]);
+        }
+    }
 }
