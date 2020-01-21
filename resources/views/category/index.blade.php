@@ -38,58 +38,82 @@
             </div>
         </div>
         <div class="box-body">
-            <a href="{{ url('/category/create') }}" class="btn btn-success"><i class="fas fa-plus"> Tambah
-                    Category</i></a>
-
+            @include('category._form_modal')
+            <a href="#" class="btn btn-success btn-add" data-toggle="modal" data-target="#modal-form">
+                <i class="fas fa-plus"> Tambah Data</i>
+            </a>
             <a href="#" class="btn btn-primary" onclick="showData()"><i class="fas fa-check"> Cobain Ajax</i></a>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="csrf-token">
 
-
-            <table id="example2" class="table table-bordered table-hover">
+            <table id="example2" class="table table-bordered table-hover" style="margin-top: 1rem">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Name_Clean</th>
+                        <th>slug</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php($no = $data->perPage() * $data->currentPage() - $data->perPage() + 1)
                     @foreach ($data as $category)
-                    <tr>
+                    {{-- $row = $(this).parent().parent() --}}
+                    {{-- $id = $row.attr('data-id') --}}
+                    {{-- url = '/category/'+ id --}}
+                    {{-- $('#modal-form').find('input[name=_token]').val('PUT'); atau 'delete' kalo hapus --}}
+                    <tr data-id="{{ $category->id }}">
                         <td>{{ $no }}</td>
                         <td>{{$category->name}}</td>
                         <td>{{$category->name_clean}}</td>
                         <td>
-                            <form action="/category/{{ $category->id }}" method="post" class="d-inline">
-                                <a href="/category/{{ $category->id }}/edit" class="btn btn-primary"><i
-                                        class="fas fa-edit"> Edit</i></a>
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('Anda yakin ingin menghapus data ?');"><i
-                                        class="fas fa-trash"> Delete</i></button>
-                            </form>
+                            <a href="#" class="btn btn-primary btn-edit" data-toggle="modal" data-target="#modal-form">
+                                <i class="fas fa-edit"></i> Ubah
+                            </a>
+                            <a href="#" class="btn btn-danger btn-delete">
+                                <i class="fas fa-trash"></i> Hapus
+                            </a>
                         </td>
                     </tr>
                     @php($no++)
                     @endforeach
+                </tbody>
             </table>
         </div>
         {{$data->links()}}
         <!-- /.box-body -->
     </div>
-
-    {{-- codingan js --}}
+    @endsection
+    @push('js')
     <script>
-        function showData() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log( this.responseText );
-                }
-            };
-            xmlhttp.open("GET", "/ajax/100", true);
-            xmlhttp.send();
-        }
+        $(function() {
+            $('.btn-add').on('click', function() {
+                $('#input-name').val('');
+                $('#input-slug').val('');
+            });
+
+            $('#btn-save').on('click', function() {
+                const token = $('#modal-form').find('input[name=_token]').val();
+                const name  = $('#input-name').val();
+                const slug  = $('#input-slug').val();
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "/category",
+                    data: "name="+name+"&name_clean="+slug+"&_token="+token,
+                    success: function(response) {
+                        // sembunyikan modal
+                        $('#modal-form').modal('hide');
+                        // clone baris table pertama
+                        //ubah data clone berdasar data dari response.data
+                        //tambahkan data clone ke baris pertama tabel (pake prepend)
+                        // ubah nomor baris baru yang lain jadi 2 dst (find)
+                    },
+                    error: function(err) {
+                        alert('ada error!');
+                    }
+                });
+            });
+        });
     </script>
-@endsection
+    @endpush
