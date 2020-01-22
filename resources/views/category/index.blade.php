@@ -83,37 +83,3 @@
         <!-- /.box-body -->
     </div>
     @endsection
-    @push('js')
-    <script>
-        $(function() {
-            $('.btn-add').on('click', function() {
-                $('#input-name').val('');
-                $('#input-slug').val('');
-            });
-
-            $('#btn-save').on('click', function() {
-                const token = $('#modal-form').find('input[name=_token]').val();
-                const name  = $('#input-name').val();
-                const slug  = $('#input-slug').val();
-
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: "/category",
-                    data: "name="+name+"&name_clean="+slug+"&_token="+token,
-                    success: function(response) {
-                        // sembunyikan modal
-                        $('#modal-form').modal('hide');
-                        // clone baris table pertama
-                        //ubah data clone berdasar data dari response.data
-                        //tambahkan data clone ke baris pertama tabel (pake prepend)
-                        // ubah nomor baris baru yang lain jadi 2 dst (find)
-                    },
-                    error: function(err) {
-                        alert('ada error!');
-                    }
-                });
-            });
-        });
-    </script>
-    @endpush
