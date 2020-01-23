@@ -7,7 +7,7 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="formModalLabel">Form Kategori</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="modal-body">
                     @csrf
                     <div class="form-group">
                         <label for="input-name">Nama Kategori</label>

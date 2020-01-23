@@ -6,6 +6,7 @@
   <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
@@ -350,7 +351,7 @@
 
 <!-- jQuery 3 -->
 <script src="{{ asset('plugins/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('plugins/jquery/dist/script.js') }}"></script>
+{{-- <script src="{{ asset('plugins/jquery/dist/script.js') }}"></script> --}}
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
