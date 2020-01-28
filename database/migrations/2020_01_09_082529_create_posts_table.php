@@ -17,12 +17,12 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('article');
-            $table->string('title_clean');
+            $table->string('slug');
             $table->string('file');
             $table->unsignedbigInteger('author_id');
             $table->unsignedbigInteger('category_id');
-            $table->string('banner_image');
-            $table->integer('views');
+            $table->date('date');
+            $table->integer('views')->default(0);
             $table->timestamps();
 
             $table->foreign('author_id')->references('id')->on('authors');

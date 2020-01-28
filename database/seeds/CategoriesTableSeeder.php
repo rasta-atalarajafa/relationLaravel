@@ -13,7 +13,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $data = array();
-        foreach (range(1, 5) as $index) {
+        foreach (range(1, 100) as $index) {
             $data[] = [
                 'name'       => 'Kategori #'. $index,
                 'name_clean' => '-',

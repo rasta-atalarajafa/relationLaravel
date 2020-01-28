@@ -14,7 +14,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $data = Categorie::paginate(5);
+        $data = Categorie::orderBy('id', 'desc')->limit(100)->get();
+        
         return view('category.index', compact('data'));
     }
 
@@ -36,8 +37,13 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        Categorie::create($request->all());
-        return redirect('/category');
+      $category = Categorie::create($request->all());
+        
+        return response()->json([
+            'code' => 201,
+            'success' => true,
+            'data' => $category
+        ], 201);
     }
 
     /**

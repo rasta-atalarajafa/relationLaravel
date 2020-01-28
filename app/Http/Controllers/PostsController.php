@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Author;
 use App\Tag;
 use App\Categorie;
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -16,7 +18,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $data = Post::paginate(5);
+        $data = Post::orderBy('id', 'desc')->limit(100)->get();
+        
         return view('post.index', compact('data'));
     }
 
@@ -29,7 +32,8 @@ class PostsController extends Controller
     {
         $categories = Categorie::pluck('name', 'id');
         $tags = Tag::get(['id','name']);
-        return view('post.create', compact('tags','categories'));
+        $authors = Author::get(['id', 'display_name']);
+        return view('post.create', compact('authors', 'tags','categories'));
     }
 
     /**
@@ -38,11 +42,37 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {   
-        dd($request->all());
-        Post::create($request->all());
-        return redirect('/post');
+    public function store(PostRequest $request)
+    {
+        $add_post = Post::create($request->all());
+        $add_post->tags()->sync($request->tag);
+     
+        // $file = $request->file('file')->store('photos');
+
+        // $request->user()->update([
+        //     'file' => $file
+        // ]);
+
+        if (!$add_post) {
+            return back()->with('error', 'Gagal menambahkan cover!');
+        }
+
+        if ($request->hasFile('file'))
+        {
+            $allowed    = ['jpg', 'jpeg', 'png'];
+            $file       = $request->file('file');
+            $title      = $file->getClientOriginalName();
+            $extension  = $file->getClientOriginalExtension();
+            $name       = time().'_'.date('d_m_Y').'.'.$extension;
+
+            $check = in_array($extension, $allowed);
+            if ($check) {
+                $file->move(public_path('storage'), $name);
+                $add_post->update(['file' => $name]);
+            }
+        }
+
+        return redirect('/post')->with('success', 'Berhasil menambah arsip baru');
     }
 
     /**

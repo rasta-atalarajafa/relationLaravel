@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect(route('login'));
-});
-
 Auth::routes();
-
+Route::get('/', 'FrontendController@index')->name('index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ajax/{id}', 'HomeController@getAjax')->name('ajax.index');
+Route::post('/ajax', 'HomeController@storeAjax')->name('ajax.store');
 
 //posts
 Route::resource('post','PostsController');

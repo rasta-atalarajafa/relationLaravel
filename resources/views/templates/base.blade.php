@@ -18,6 +18,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ asset('css/skins/_all-skins.min.css') }}">
+  @stack('css')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,9 +38,9 @@
     <!-- Logo -->
     <a href="{{ url('/home') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>SM</span>
+      <span class="logo-mini"><b>R</b>AW</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>ASMW</span>
+      <span class="logo-lg"><b>Rasta</b>Atala</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -56,13 +57,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('img/trihard.jpg') }}" class="user-image" alt="User Image">
+              <img src="{{ asset('img/avatar5.png') }}" class="user-image" alt="User Image">
               <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{ asset('img/trihard.jpg') }}" class="img-circle" alt="User Image">
+                <img src="{{ asset('img/avatar5.png') }}" class="img-circle" alt="User Image">
 
                 <p>
                   {{ Auth::user()->name }} - Web Developer
@@ -98,7 +99,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('img/trihard.jpg') }}" class="img-circle" alt="User Image">
+          <img src="{{ asset('img/avatar5.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
@@ -349,6 +350,7 @@
 
 <!-- jQuery 3 -->
 <script src="{{ asset('plugins/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('plugins/jquery/dist/script.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
@@ -362,7 +364,8 @@
 <script type="text/javascript">
   $(document).ready(function () {
     $('.sidebar-menu').tree()
-  })
+  });
 </script>
+@stack('js')
 </body>
 </html>
